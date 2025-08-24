@@ -1,4 +1,5 @@
 import express from "express";
+import bodyParser from "body-parser";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -17,11 +18,19 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // for CSS/JS if needed
 
+app.use(bodyParser.urlencoded({extended:true}));
+
 // Routes
 app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.post("/submit", (req,res)=>{
+    const {name, age, rollno} = req.body;
+    console.log(name);
+    console.log(age);
+    console.log(rollno);
+});
 
 // Start server
 app.listen(PORT, () => {
