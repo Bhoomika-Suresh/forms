@@ -30,6 +30,12 @@ app.post("/submit", (req,res)=>{
     console.log(name);
     console.log(age);
     console.log(rollno);
+    const user= {
+        name:name,
+        age:age,
+        rollno:rollno,  
+    }
+    res.render("index", {student:user});
 });
 
 // Start server
