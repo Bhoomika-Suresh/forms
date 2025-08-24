@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Student</title>
+  <style>
+    nav {
+      background: #333;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <a href="/">home</a>
      <% if (locals.student && locals.student.name) { %>
   <p><strong>Name:</strong> <%= student.name %></p>
   <p><strong>Age:</strong> <%= student.age %></p>
@@ -14,5 +27,43 @@
 <% } else { %>
   <p>No data available</p>
 <% } %>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Student</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Navigation bar -->
+  <nav>
+    <a href="/">Home</a>
+    <a href="/search">Search</a>
+  </nav>
+
+  <div class="container">
+    <h1>Search Student</h1>
+
+    <form action="/search" method="POST">
+      <label for="name">Enter Name:</label>
+      <input type="text" id="name" name="name" required>
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Show search result if available -->
+    <div class="data">
+      <% if (locals.student && locals.student.name) { %>
+        <h2>Search Result</h2>
+        <p><strong>Name:</strong> <%= student.name %></p>
+        <p><strong>Age:</strong> <%= student.age %></p>
+        <p><strong>Roll No:</strong> <%= student.rollno %></p>
+      <% } else { %>
+        <p>No data available</p>
+      <% } %>
+    </div>
+  </div>
 </body>
 </html>
