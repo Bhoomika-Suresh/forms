@@ -35,7 +35,7 @@ app.post("/submit", (req,res)=>{
         age:age,
         rollno:rollno,  
     }
-    res.render("index", {student:user});
+    res.render("result", {student:user});
 });
 
 // Start server
