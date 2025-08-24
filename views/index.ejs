@@ -23,24 +23,12 @@
     <!-- Submit -->
     <button type="submit">Submit</button>
   </form>
-    <% if (locals.students && locals.students.length > 0) { %>
-    <table border="1" cellpadding="8">
-      <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Roll No</th>
-      </tr>
-
-      <% students.forEach(student => { %>
-        <tr>
-          <td><%= student.name %></td>
-          <td><%= student.age %></td>
-          <td><%= student.rollno %></td>
-        </tr>
-      <% }) %>
-    </table>
-  <% } else { %>
-    <p><strong>No data available</strong></p>
-  <% } %>
+    <% if (locals.student && locals.student.name) { %>
+  <p><strong>Name:</strong> <%= student.name %></p>
+  <p><strong>Age:</strong> <%= student.age %></p>
+  <p><strong>Roll No:</strong> <%= student.rollno %></p>
+<% } else { %>
+  <p>No data available</p>
+<% } %>
 </body>
 </html>
