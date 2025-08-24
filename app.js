@@ -20,9 +20,15 @@ app.use(express.static(path.join(__dirname, "public"))); // for CSS/JS if needed
 
 app.use(bodyParser.urlencoded({extended:true}));
 
+let users=[];
+
 // Routes
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/search", (req, res) => {
+  res.render("result");
 });
 
 app.post("/submit", (req,res)=>{
@@ -35,7 +41,22 @@ app.post("/submit", (req,res)=>{
         age:age,
         rollno:rollno,  
     }
-    res.render("result", {student:user});
+    users.push(user);
+    res.render("index", {student:user});
+});
+
+app.post("/search", (req,res)=>{
+  const {name} = req.body;
+  console.log(name);
+  let value;
+  for(let i=0;i<users.length;i++){
+    if(users[i].name== name){
+      value=i;
+      break;
+    }
+  }
+  res.render("result",{student:users[value]})
+
 });
 
 // Start server
