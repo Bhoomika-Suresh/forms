@@ -22,17 +22,20 @@
       <button type="submit">Search</button>
     </form>
 
-    <!-- Show search result if available -->
-    <div class="data">
-      <% if (locals.student && locals.student.name) { %>
-        <h2>Search Result</h2>
-        <p><strong>Name:</strong> <%= student.name %></p>
-        <p><strong>Age:</strong> <%= student.age %></p>
-        <p><strong>Roll No:</strong> <%= student.rollno %></p>
-      <% } else { %>
-        <p>No data available</p>
-      <% } %>
-    </div>
+<!-- Show search result if available -->
+<div class="data">
+  <% if (locals.student && student.length > 0) { %>
+    <h2>Search Result</h2>
+    <% student.forEach(s => { %>
+      <p><strong>Name:</strong> <%= s.name %></p>
+      <p><strong>Age:</strong> <%= s.age %></p>
+      <p><strong>Roll No:</strong> <%= s.rollno %></p>
+      <hr>
+    <% }) %>
+  <% } else { %>
+    <p>No data available</p>
+  <% } %>
+</div>
   </div>
 </body>
 </html>
